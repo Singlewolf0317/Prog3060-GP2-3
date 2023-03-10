@@ -61,4 +61,8 @@ public class GeographicareaEntity {
     public void setAlternativeCode(int alternativeCode) {
         this.alternativeCode = alternativeCode;
     }
+
+    public String displayInfo(){
+        return "ID: "+this.getGeographicAreaId()+" Name: "+this.getName()+" Leve: "+this.getLevel()+ " Code: "+this.getCode()+"Alternative Code: "+this.getAlternativeCode();
+    }
 }

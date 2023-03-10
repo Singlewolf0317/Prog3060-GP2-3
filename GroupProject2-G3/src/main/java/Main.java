@@ -6,6 +6,9 @@ import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+
 
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +16,21 @@ import java.util.Objects;
 public class Main {
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
     public static void main(String[] args){
+
+
+        // Question 2
+        System.out.println("Question 2 result:");
+        System.out.println(findById(10).displayInfo());
+
+
+        // Question 3
+        List<GeographicareaEntity>results =queryForLevel(2);
+        System.out.println("Question 3 result:");
+        for (int i = 0; i < results.size(); i++) {
+            System.out.println(results.get(i).displayInfo());
+        }
+
+
         // Question 5
         displayNumberOfRecords();
         // Question 6
@@ -21,6 +39,30 @@ public class Main {
         // Close Entity Manager Factory
         entityManagerFactory.close();
     }
+
+    // Question 2:display information of a geographicarea with id
+    public static GeographicareaEntity findById(int id) {
+        //create entity manager
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        //execute find method
+        GeographicareaEntity geo = (GeographicareaEntity) entityManager.find(GeographicareaEntity.class,id);
+        entityManager.close();
+        return geo;
+
+    }
+
+    // Question 3:display information of geographicareaa with matching level
+    public static List<GeographicareaEntity> queryForLevel(int level) {
+        //create entity manager
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        //execute createQuery method
+        List<GeographicareaEntity> listOfLevel = entityManager.createQuery("SELECT geographicareaEntity from GeographicareaEntity geographicareaEntity where geographicareaEntity.level = level")
+                .getResultList();
+        return listOfLevel;
+    }
+
+
+
 
     // Question 5: The function is used to display total number of records with 2016 Canada Census
     public static void displayNumberOfRecords(){
