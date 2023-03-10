@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="entity.AgeEntity">
+        <table name="age" schema="prog3060" catalog=""/>
+        <attributes>
+            <id name="ageId">
+                <column name="ageID" precision="-1"/>
+            </id>
+            <basic name="ageGroup">
+                <column name="ageGroup" precision="-1"/>
+            </basic>
+            <basic name="censusYear">
+                <column name="censusYear" precision="-1"/>
+            </basic>
+            <basic name="geographicArea">
+                <column name="geographicArea" precision="-1"/>
+            </basic>
+            <basic name="combined">
+                <column name="combined" precision="-1"/>
+            </basic>
+            <basic name="male">
+                <column name="male" precision="-1"/>
+            </basic>
+            <basic name="female">
+                <column name="female" precision="-1"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

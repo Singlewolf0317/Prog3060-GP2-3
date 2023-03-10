@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="entity.HouseholdEntity">
+        <table name="household" schema="prog3060" catalog=""/>
+        <attributes>
+            <id name="id">
+                <column name="id" precision="-1"/>
+            </id>
+            <basic name="geographicArea">
+                <column name="geographicArea" precision="-1"/>
+            </basic>
+            <basic name="householdType">
+                <column name="householdType" precision="-1"/>
+            </basic>
+            <basic name="householdSize">
+                <column name="householdSize" precision="-1"/>
+            </basic>
+            <basic name="householdsByAgeRange">
+                <column name="householdsByAgeRange" precision="-1"/>
+            </basic>
+            <basic name="householdEarners">
+                <column name="householdEarners" precision="-1"/>
+            </basic>
+            <basic name="totalIncome">
+                <column name="totalIncome" precision="-1"/>
+            </basic>
+            <basic name="censusYear">
+                <column name="censusYear" precision="-1"/>
+            </basic>
+            <basic name="numberReported">
+                <column name="numberReported" precision="-1"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

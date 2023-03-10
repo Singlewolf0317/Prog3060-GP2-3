@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="entity.GeographicareaEntity">
+        <table name="geographicarea" schema="prog3060" catalog=""/>
+        <attributes>
+            <id name="geographicAreaId">
+                <column name="geographicAreaID" precision="-1"/>
+            </id>
+            <basic name="code">
+                <column name="code" precision="-1"/>
+            </basic>
+            <basic name="level">
+                <column name="level" precision="-1"/>
+            </basic>
+            <basic name="name">
+                <column name="name" length="40"/>
+            </basic>
+            <basic name="alternativeCode">
+                <column name="alternativeCode" precision="-1"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>
