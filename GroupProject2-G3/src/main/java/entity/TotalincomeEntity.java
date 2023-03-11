@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "totalincome", schema = "prog3060", catalog = "")
+@org.hibernate.annotations.NamedQuery(name = "findallIncome", query = "from TotalincomeEntity")
 public class TotalincomeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

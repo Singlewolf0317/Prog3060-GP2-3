@@ -10,27 +10,25 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 
 
+import javax.management.Query;
 import java.util.List;
 import java.util.Objects;
 
 public class Main {
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
     public static void main(String[] args){
-
-
         // Question 2
         System.out.println("Question 2 result:");
         System.out.println(findById(10).displayInfo());
 
-
         // Question 3
         List<GeographicareaEntity>results =queryForLevel(2);
-        System.out.println("Question 3 result:");
+        System.out.println("\nQuestion 3 result:");
         for (int i = 0; i < results.size(); i++) {
             System.out.println(results.get(i).displayInfo());
         }
-
-
+        // Question 4
+        displayTotalIncome();
         // Question 5
         displayNumberOfRecords();
         // Question 6
@@ -48,7 +46,6 @@ public class Main {
         GeographicareaEntity geo = (GeographicareaEntity) entityManager.find(GeographicareaEntity.class,id);
         entityManager.close();
         return geo;
-
     }
 
     // Question 3:display information of geographicareaa with matching level
@@ -61,8 +58,16 @@ public class Main {
         return listOfLevel;
     }
 
-
-
+    // Question 4: Retrieve information about the Total Income with named query
+    public static void displayTotalIncome(){
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        TypedQuery<TotalincomeEntity> query = entityManager.createNamedQuery("findallIncome", TotalincomeEntity.class).setMaxResults(10);
+        List<TotalincomeEntity> resultList = query.getResultList();
+        System.out.println("\nQuestion 4 result:");
+        System.out.printf("%-4s %-10s %n","Id","Description");
+        resultList.forEach(income->System.out.printf("%-4s %-10s %n",income.getId(),income.getDescription()));
+        entityManager.close();
+    }
 
     // Question 5: The function is used to display total number of records with 2016 Canada Census
     public static void displayNumberOfRecords(){
@@ -90,7 +95,7 @@ public class Main {
                 "Where c.censusYear=2016 AND ti.description='$80,000 to $89,999'";
 
         try{
-            System.out.println("Question 5-a: "+entityManager.createQuery(aQuery).getSingleResult().toString());
+            System.out.println("\nQuestion 5-a: "+entityManager.createQuery(aQuery).getSingleResult().toString());
             System.out.println("Question 5-b: "+entityManager.createQuery(bQuery).getSingleResult().toString());
             System.out.println("Question 5-c: "+entityManager.createQuery(cQuery).getSingleResult().toString());
             System.out.println("Question 5-d: "+entityManager.createQuery(dQuery).getSingleResult().toString());
